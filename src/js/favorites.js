@@ -5,7 +5,7 @@ import favList from "./favList.mjs";
 const targetElement = document.getElementById("favoriteslist");
 const favoritesList = new favList(targetElement);
 const info = new Datasource();
-favoritesList.initialize(targetElement, info);
+favoritesList.initialize(targetElement);
 
 loadPartials(
   "header",

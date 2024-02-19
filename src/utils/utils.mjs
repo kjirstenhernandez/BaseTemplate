@@ -36,9 +36,9 @@ export function renderListWithTemplate(
   parentElement, //target element
   data, //array of information to be made into the list
   position = "afterbegin", //where to place the inserted HTML
-  datasource, //datasource object
+  imageList, // hopefully a list of images....
 ) {
-  const listItems = data.map((cat) => templateFunction(cat, datasource));
+  const listItems = data.map((cat) => templateFunction(cat));
 
   parentElement.insertAdjacentHTML(position, listItems.join(""));
 }
@@ -72,4 +72,18 @@ export function getTextFromHTML(text) {
 
 export function getStorageKey() {
   return "favKey";
+}
+
+export async function getImageList() {
+  const response = await fetch(imageBase);
+  const data = await response.json();
+  return data;
+}
+
+export function removeFromLocalStorage(key, value) {
+  console.log("test");
+  let favorites = getLocalStorage(key);
+  console.log(favorites);
+  let newList = favorites.filter((item) => item.id != value);
+  setLocalStorage(key, newList);
 }

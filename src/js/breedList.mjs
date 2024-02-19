@@ -14,7 +14,7 @@ export default class BreedList {
 
   // buildList(){}
 
-  buildCatList(catData, imageData) {
+  buildCatList(catData) {
     renderListWithTemplate(basicCatCardTemplate, this.element, catData);
 
     document.querySelectorAll(".cat-card").forEach((item) => {
@@ -22,10 +22,6 @@ export default class BreedList {
         const catName = event.target.innerHTML;
         const catDetails = new CatDetails(catName, this.dataSource);
         catDetails.initialize();
-        // [...document.querySelectorAll(".cat-card")].forEach(function (cat) {
-        //   cat.addEventListener("click", function () {
-        //     let k = document.querySelector(".cat_id").innerHTML;
-        //     console.log(cat.name);
       });
     });
   }

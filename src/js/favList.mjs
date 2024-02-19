@@ -2,18 +2,27 @@ import {
   getLocalStorage,
   renderListWithTemplate,
   getStorageKey,
+  getImageList,
+  setLocalStorage,
+  removeFromLocalStorage,
 } from "../utils/utils.mjs";
 
 export default class favList {
-  constructor(parentElement, datasource) {
+  constructor(parentElement) {
     this.cartkey = getStorageKey();
     this.parentElement = parentElement;
-    this.data = datasource;
   }
 
   async initialize() {
-    let imageList = await this.data.getImageList();
+    let imageList = await getImageList();
+    console.log(imageList);
     this.renderList(imageList);
+  }
+
+  bindRemovebuttons() {
+    document.querySelector(".remove").addEventListener("click", (event) => {
+      this.removeFromFavorites(event.target.getAttribute("data-id"));
+    });
   }
 
   getList() {
@@ -21,7 +30,6 @@ export default class favList {
   }
 
   renderList(imageList) {
-    console.log(imageList);
     let list = this.getList();
     if (list != null && list.length != 0) {
       console.log(this.data);
@@ -36,13 +44,17 @@ export default class favList {
       document.querySelector(".favDetail").innerHTML =
         "<h2>Looks like you're a little short on Cats</h2><br><h4>Go back and find some!</h4>";
     }
+    this.bindRemovebuttons();
+  }
+
+  removeFromFavorites(id) {
+    removeFromLocalStorage(this.cartkey, id);
+    this.renderList();
   }
 }
 
-function favCatCard(cat, data) {
-  console.log(data);
+function favCatCard(cat) {
   return `<li class="cat-card listItem">
-    <img src=${image} class="thumb" alt="${cat.name}">
     <h3>${cat.name}</h3>
     <p>${cat.origin}</p>
     <p>${cat.temperament}</p>
