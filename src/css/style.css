@@ -11,7 +11,7 @@
   --secondary-color: #aaefdf;
   --tertiary-color: #124559;
   --accent-color: #fe5f55;
-  --lightfont-color: #fef8eb;
+  --lightfont-color: white;
   --darkfont-color: #01161e;
   /* Font Selection */
   --header1-text: "Quicksand", Tahoma, sans-serif;
@@ -20,7 +20,7 @@
   /* Font Sizes */
   --font-base: 18px;
   --small-font: 0.8em;
-  --medium-font: 1.2em;
+  --medium-font: 1.5em;
   --large-font: 2em;
   --extra-large-font: 2.5em;
 }
@@ -28,6 +28,8 @@
 body {
   margin: 0;
   padding: 0;
+  cursor: url("https://github.com/kjirstenhernandez/BaseTemplate/blob/main/src/public/images/yarn.png?raw=true"),
+    auto;
 }
 
 /* -------Defaults ------ */
@@ -46,6 +48,11 @@ h6,
 p,
 span {
   font-family: var(--paragraph-text);
+}
+
+button {
+  background-color: #f6f5f4;
+  color: var(--darkfont-color);
 }
 
 /* ------ Header ----- */
@@ -216,7 +223,6 @@ main {
 .details ul {
   margin: 0 auto;
   column-count: 4;
-  justify-content: space-evenly;
   width: 80%;
 }
 
@@ -232,16 +238,83 @@ main {
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.433) 0px 1px 3px -1px;
   padding: 0.75rem;
-  margin: 1rem;
+  margin-bottom: 1rem;
 }
 
 .cat-card:hover {
   background-color: #195066;
 }
 
-/* #detailPage {
-  position: ;
-} */
+/* ---- Cat Details Pop-up */
+
+.catDetailGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.gridLeft {
+  grid-column: 1/2;
+}
+
+.gridRight {
+  grid-column: 2/3;
+  padding: 1rem;
+}
+
+.cat-detail {
+  width: 70%;
+  background-color: var(--secondary-color);
+  overflow: scroll;
+  scrollbar-width: thin;
+  position: fixed;
+  top: 5px;
+  left: 5px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.cat-detail a {
+  margin-top: -10px;
+  font-size: var(--medium-font);
+  text-decoration: none;
+  font-family: var(--paragraph-text);
+  color: var(--darkfont-color);
+  font-style: italic;
+}
+
+.cat-detail img {
+  max-width: 500px;
+  width: 90%;
+  padding: 0.5rem;
+}
+
+.cat-detail p {
+  font-size: var(--font-base);
+}
+
+.cat-detail button {
+  padding: 1rem;
+  font-size: var(--font-base);
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.753) 0px 1px 3px -1px;
+}
+
+#closeButton {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+button:active {
+  background-color:;
+}
+
+#added {
+  font-size: small;
+  font-style: italic;
+}
 
 /* ============================================================= */
 /*                          MEDIA QUERIES
@@ -251,6 +324,22 @@ main {
 @media only screen and (max-width: 1025px) {
   .details ul {
     column-count: 2;
+  }
+
+  .catDetailGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .gridLeft {
+    grid-column: 1;
+  }
+
+  .gridRight {
+    grid-column: 1;
+  }
+
+  .cat-detail {
+    width: fit-content;
   }
 }
 /* ============== Small Screens ================ */

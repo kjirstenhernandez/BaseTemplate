@@ -54,7 +54,7 @@ export default class favList {
 }
 
 function favCatCard(cat) {
-  return `<li class="cat-card listItem">
+  return `<li class="favCard listItem">
     <h3>${cat.name}</h3>
     <p>${cat.origin}</p>
     <p>${cat.temperament}</p>

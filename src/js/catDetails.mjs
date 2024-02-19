@@ -26,6 +26,12 @@ export default class CatDetails {
       "afterBegin",
       catDetailTemplate(this.cat[0], imageURL),
     );
+
+    document.getElementById("close").addEventListener("click", (event) => {
+      const div = document.querySelector(".cat-detail");
+      div.innerHTML = "";
+    });
+
     document
       .getElementById("addFav")
       .addEventListener("click", this.addToFavorites.bind(this.cat[0])); //Michael:  Why wouldn't this work without the bind?
@@ -49,22 +55,31 @@ export default class CatDetails {
 
     list.push(this);
     setLocalStorage(key, list);
+
+    const added = document.querySelector("#added");
+    added.innerHTML = "<p>Added to Favorites</p>";
   }
 }
 
 function catDetailTemplate(cat, image) {
   return `<div class=cat-detail>
-    <h1>${cat.name} Cat</h3>
-    <h3><a href="${cat.wikipedia_url}" target="_blank">Wiki Page</a>
-    <img src="${image}" alt="${cat.name}">
-    <br>
-    <p>Origin: ${cat.origin}</p>
-    <p>Weight: ${cat.weight.imperial} pounds</p>
-    <p>Temperament: ${cat.temperament}</p>
-    <p>Lifespan: ${cat.life_span} years
-    <br>
-    <p>${cat.description}</p>
-    <br>
-    <div class="favoritesAdd"><button id=addFav data-id="${cat.id}">Add to Favorites</button></div>
+    <div id="closeButton"><button id="close">X</button></div>
+    <h1>${cat.name} Cat</h1>
+    <a href="${cat.wikipedia_url}" target="_blank">Wiki Page</a>
+    <div class=catDetailGrid>
+    <div class=gridLeft>
+          <img src="${image}" alt="${cat.name}">
+    </div>
+    <div class=gridRight>
+          <p><strong>Origin:</strong> ${cat.origin}</p>
+          <p><strong>Weight:</strong> ${cat.weight.imperial} pounds</p>
+          <p><strong>Temperament:</strong> ${cat.temperament}</p>
+          <p><strong>Lifespan:</strong> ${cat.life_span} years
+          <br>
+          <p>${cat.description}</p>
+      </div
+    </div>
+    <div class="favoritesAdd"><button id=addFav data-id="${cat.id}">Add to Favorites</button><div id="added"></div></div>
+   
     `;
 }
