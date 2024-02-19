@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,7 +6,7 @@
     <title>Cats and Cats | Home</title>
     <link rel="icon" href="public/images/logos/favicon.png" />
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/carousel.js"></script>
+    <script src="js/carousel.js" type="module"></script>
   </head>
   <body>
     <header id="header">
@@ -27,20 +27,21 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="breed-listing/index.html">Breeds</a></li>
         <li><a href="favorites/index.html">Favorites</a></li>
-        <li><a href="join/index.html">Join</a></li>
       </ul>
     </nav>
+
     <main class="divider">
-      <div id="test"></div>
-      <section id="carousel" class="gridLeft"></section>
-      <section class="mainInfo information gridRight">
+      <section id="test"></section>
+      <div id="intro">
         <h1>Welcome to Cats and Cats!</h1>
         <h4>
           Here you can learn about all the different breeds of house cats, and
           save your favorites for your viewing pleasure later!
         </h4>
-      </section>
+      </div>
+      <div id="carousel"></div>
     </main>
+
     <footer id="footer">
       <div class="container">
         <div class="footer-main">
