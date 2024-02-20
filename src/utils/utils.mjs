@@ -1,6 +1,6 @@
 const apiURL =
   "https://api.thecatapi.com/v1/images/search?limit=3&api_key=live_vYBougwwbfP7f8jXBY8yn9ZffrNnOREGScRBlKkw9QTQOX9ZtYv6C1dNceQuRbAZ";
-const imageBase = "../public/json/images.json";
+const imageBase = "/json/images.json";
 
 // Load the dynamic header and footer
 export async function loadPartials(

@@ -1,5 +1,5 @@
 const apiURL = "https://api.thecatapi.com/v1/breeds";
-const imageBase = "../public/json/images.json";
+const imageBase = "/json/images.json";
 export default class Datasource {
   constructor() {}
 
