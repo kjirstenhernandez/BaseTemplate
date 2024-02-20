@@ -41,7 +41,6 @@ export default class CatDetails {
     console.log(this);
     let key = getStorageKey();
     let favorites = getLocalStorage(key);
-    console.log(favorites);
     let list = [];
     if (favorites == null || favorites[0] == null) {
       list.push(this);
@@ -49,6 +48,8 @@ export default class CatDetails {
       favorites.forEach((item) => {
         if (item.id != this.id) {
           list.push(item);
+        } else {
+          console.log("This is already added.");
         }
       });
     }

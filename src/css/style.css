@@ -328,6 +328,7 @@ button:active {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  list-style-type: none;
 }
 
 .thumb {
@@ -339,15 +340,31 @@ button:active {
   width: auto;
   max-width: 400px;
   padding: 1rem;
+  background-color: var(--secondary-color);
+  margin-bottom: 2rem;
+  border-radius: 15px;
+  box-shadow:
+    rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.favCard a {
+  font-family: var(--paragraph-text);
+  color: var(--darkfont-color);
 }
 
 .favInfo {
   text-align: center;
+  margin: 0 auto;
 }
 
 .remove {
-  display: block;
+  background-color: --;
   margin-top: 0 auto;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: var(--font-base);
 }
 
 /* ============================================================= */
