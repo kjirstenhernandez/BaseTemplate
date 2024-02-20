@@ -5,6 +5,7 @@ export default defineConfig({
   root: "src/",
 
   build: {
+    target: "esnext",
     outDir: "../dist",
     rollupOptions: {
       input: {
@@ -12,7 +13,6 @@ export default defineConfig({
         breeds: resolve(__dirname, "src/breed-listing/index.html"),
         breed_detail: resolve(__dirname, "src/breed_detail/index.html"),
         favorites: resolve(__dirname, "src/favorites/index.html"),
-        join: resolve(__dirname, "src/join/index.html"),
       },
     },
   },

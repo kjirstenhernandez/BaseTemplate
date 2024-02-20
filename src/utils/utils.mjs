@@ -38,7 +38,7 @@ export function renderListWithTemplate(
   position = "afterbegin", //where to place the inserted HTML
   imageList, // hopefully a list of images....
 ) {
-  const listItems = data.map((cat) => templateFunction(cat));
+  const listItems = data.map((cat) => templateFunction(cat, imageList));
 
   parentElement.insertAdjacentHTML(position, listItems.join(""));
 }

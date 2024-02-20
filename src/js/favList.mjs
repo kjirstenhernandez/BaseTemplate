@@ -34,7 +34,7 @@ export default class favList {
     if (list != null && list.length != 0) {
       console.log(this.data);
       renderListWithTemplate(
-        favCatCard,
+        favCatCardDuplicate,
         this.parentElement,
         this.getList(),
         "afterbegin",
@@ -60,4 +60,22 @@ function favCatCard(cat) {
     <p>${cat.temperament}</p>
     <p>${cat.wikipedia_url}</p>
     <button class="remove" data-id="${cat.id}">Remove</button>`;
+}
+
+function favCatCardDuplicate(cat, image) {
+  let test = cat.id;
+  console.log(test);
+  let photo = image[cat.id];
+  console.log(photo);
+  return `<li class="favCard listItem">
+  <img class="thumb" src="${photo[0].url}" alt="photo of ${cat.name}">
+  <h3>${cat.name}</h3>
+  <div class="favInfo">
+      <p>${cat.origin}</p>
+      <p>${cat.temperament}</p>
+      <a href="${cat.wikipedia_url}">Wiki Page</a>
+  </div>
+  <br>
+  <button class="remove" data-id="${cat.id}">Remove</button>
+  </li>`;
 }
