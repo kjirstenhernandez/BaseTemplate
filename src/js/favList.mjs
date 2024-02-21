@@ -19,20 +19,25 @@ export default class favList {
     this.renderList(imageList);
   }
 
+  // bind the remove button to each cat card
   bindRemovebuttons() {
-    document.querySelector(".remove").addEventListener("click", (event) => {
-      this.removeFromFavorites(event.target.getAttribute("data-id"));
+    let array = document.querySelectorAll(".remove");
+    array.forEach((elem) => {
+      elem.addEventListener("click", (event) => {
+        this.removeFromFavorites(event.target.getAttribute("data-id"));
+      });
     });
   }
 
+  // Populate the cat card list through Local Storage
   getList() {
     return getLocalStorage(this.cartkey);
   }
 
+  //
   renderList(imageList) {
     let list = this.getList();
     if (list != null && list.length != 0) {
-      console.log(this.data);
       renderListWithTemplate(
         favCatCard,
         this.parentElement,
@@ -48,15 +53,17 @@ export default class favList {
   }
 
   removeFromFavorites(id) {
+    let catList = document.getElementById("favoriteslist");
+    let catItem = document.getElementById(id);
     removeFromLocalStorage(this.cartkey, id);
+    catList.removeChild(catItem);
     this.renderList();
-    location.reload();
   }
 }
 
 function favCatCard(cat, image) {
   let photo = image[cat.id];
-  return `<li class="favCard listItem">
+  return `<li class="favCard" id=${cat.id}>
   <img class="thumb" src="${photo[0].url}" alt="photo of ${cat.name}">
   <h3>${cat.name}</h3>
   <div class="favInfo">

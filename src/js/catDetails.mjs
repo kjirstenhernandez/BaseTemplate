@@ -16,9 +16,9 @@ export default class CatDetails {
     const image = await this.dataSource.findImagebyId(this.cat[0].id);
     const imageList = await this.dataSource.getImageList();
     this.renderCatDetails("detailPage", image);
-    // add event-listener later for the "add to favorites
   }
 
+  // Renders the pop-up window with the cat information
   renderCatDetails(elementId, imageURL) {
     const element = document.getElementById(elementId);
     element.innerHTML = "";
@@ -27,41 +27,42 @@ export default class CatDetails {
       catDetailTemplate(this.cat[0], imageURL),
     );
 
+    // Close Button functionality
     document.getElementById("close").addEventListener("click", (event) => {
       const div = document.querySelector(".cat-detail");
       div.innerHTML = "";
     });
 
+    // Event Listener to add the cat to the favorites
     document
       .getElementById("addFav")
-      .addEventListener("click", this.addToFavorites.bind(this.cat[0])); //Michael:  Why wouldn't this work without the bind?
+      .addEventListener("click", this.addToFavorites.bind(this.cat[0]));
   }
 
+  // Function to use Local Storage to add the cat to a favorites page
   addToFavorites() {
     console.log(this);
+    const added = document.querySelector("#added");
     let key = getStorageKey();
     let favorites = getLocalStorage(key);
     let list = [];
-    if (favorites == null || favorites[0] == null) {
-      list.push(this);
-    } else {
+    if (favorites != null || favorites[0] != null) {
+      //Check to see if favorites already has the cat on it
       favorites.forEach((item) => {
         if (item.id != this.id) {
           list.push(item);
+          added.innerHTML = "<p>Added to Favorites</p>";
         } else {
-          console.log("This is already added.");
+          added.innerHTML = "<p>Already on Favorites</p>";
         }
       });
     }
-
     list.push(this);
     setLocalStorage(key, list);
-
-    const added = document.querySelector("#added");
-    added.innerHTML = "<p>Added to Favorites</p>";
   }
 }
 
+// Template for each "Cat Detail" window
 function catDetailTemplate(cat, image) {
   return `<div class=cat-detail>
     <div id="closeButton"><button id="close">X</button></div>

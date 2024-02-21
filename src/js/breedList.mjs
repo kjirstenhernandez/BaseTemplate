@@ -12,11 +12,12 @@ export default class BreedList {
     this.buildCatList(catData);
   }
 
-  // buildList(){}
-
+  // Renders the list of Cat Breeds for the Breed Page
   buildCatList(catData) {
+    //renders the template for the site
     renderListWithTemplate(basicCatCardTemplate, this.element, catData);
 
+    // Starts the "catDetails" module upon clicking on a breed to populate the window
     document.querySelectorAll(".cat-card").forEach((item) => {
       item.addEventListener("click", (event) => {
         const catName = event.target.innerHTML;
