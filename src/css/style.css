@@ -69,6 +69,8 @@ header > div {
 }
 
 header a {
+  cursor: url("https://github.com/kjirstenhernandez/BaseTemplate/blob/main/src/public/images/yarn.png?raw=true"),
+    auto;
   text-decoration: none;
   color: var(--darkfont-color);
 }
@@ -102,6 +104,8 @@ header img {
 }
 
 .nav-list a:hover {
+  cursor: url("https://github.com/kjirstenhernandez/BaseTemplate/blob/main/src/public/images/yarn.png?raw=true"),
+    auto;
   color: #ffffff;
 }
 
