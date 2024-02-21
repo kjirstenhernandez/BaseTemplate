@@ -41,7 +41,7 @@ h2,
 h3,
 h4 {
   font-family: var(--header2-text);
-  font-size: var(--large-font);
+  font-size: var(--medium-font);
 }
 h5,
 h6,
@@ -97,7 +97,12 @@ header img {
   letter-spacing: 3px;
   font-family: var(--header2-text);
   font-size: var(--font-base);
-  text-shadow: 3px 2px #301d3543;
+  text-shadow: 2px 2px #301d3543;
+  transition: color 0.3s;
+}
+
+.nav-list a:hover {
+  color: #ffffff;
 }
 
 .nav-list {
@@ -107,6 +112,10 @@ header img {
   justify-content: space-evenly;
   list-style-type: none;
   text-transform: uppercase;
+}
+
+#navigation h3 {
+  font-size: var(--small-font);
 }
 
 /* ----- Footer ----- */

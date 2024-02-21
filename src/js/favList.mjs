@@ -34,7 +34,7 @@ export default class favList {
     if (list != null && list.length != 0) {
       console.log(this.data);
       renderListWithTemplate(
-        favCatCardDuplicate,
+        favCatCard,
         this.parentElement,
         this.getList(),
         "afterbegin",
@@ -42,7 +42,7 @@ export default class favList {
       );
     } else {
       document.querySelector(".favDetail").innerHTML =
-        "<h2>Looks like you're a little short on Cats</h2><br><h4>Go back and find some!</h4>";
+        "<h2>Looks like you're a little short on Cats</h2><h4>Go back and find some!</h4>";
     }
     this.bindRemovebuttons();
   }
@@ -50,23 +50,12 @@ export default class favList {
   removeFromFavorites(id) {
     removeFromLocalStorage(this.cartkey, id);
     this.renderList();
+    location.reload();
   }
 }
 
-function favCatCard(cat) {
-  return `<li class="favCard listItem">
-    <h3>${cat.name}</h3>
-    <p>${cat.origin}</p>
-    <p>${cat.temperament}</p>
-    <p>${cat.wikipedia_url}</p>
-    <button class="remove" data-id="${cat.id}">Remove</button>`;
-}
-
-function favCatCardDuplicate(cat, image) {
-  let test = cat.id;
-  console.log(test);
+function favCatCard(cat, image) {
   let photo = image[cat.id];
-  console.log(photo);
   return `<li class="favCard listItem">
   <img class="thumb" src="${photo[0].url}" alt="photo of ${cat.name}">
   <h3>${cat.name}</h3>

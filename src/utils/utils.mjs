@@ -4,10 +4,10 @@ const imageBase = "/json/images.json";
 
 // Load the dynamic header and footer
 export async function loadPartials(
-  headerID,
+  headerID, //Parent Elements
   footerID,
   navID,
-  headerPath,
+  headerPath, //Partials Locations
   footerPath,
   navPath,
 ) {
@@ -22,8 +22,6 @@ export async function loadPartials(
   const header_template = await header_response.text();
   const footer_template = await footer_response.text();
   const nav_template = await nav_response.text();
-
-  // console.log(header_template, footer_template, nav_template);
 
   header_element.insertAdjacentHTML("afterbegin", header_template);
   footer_element.insertAdjacentHTML("afterbegin", footer_template);
@@ -81,9 +79,7 @@ export async function getImageList() {
 }
 
 export function removeFromLocalStorage(key, value) {
-  console.log("test");
   let favorites = getLocalStorage(key);
-  console.log(favorites);
   let newList = favorites.filter((item) => item.id != value);
   setLocalStorage(key, newList);
 }
