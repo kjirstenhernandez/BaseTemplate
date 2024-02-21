@@ -34,7 +34,7 @@ export default class favList {
     return getLocalStorage(this.cartkey);
   }
 
-  //
+  // Render each of the cards for the items on the favorites list
   renderList(imageList) {
     let list = this.getList();
     if (list != null && list.length != 0) {
@@ -46,6 +46,7 @@ export default class favList {
         imageList,
       );
     } else {
+      // if the favorites list is empty
       document.querySelector(".favDetail").innerHTML =
         "<h2>Looks like you're a little short on Cats</h2><h4>Go back and find some!</h4>";
     }
@@ -55,12 +56,13 @@ export default class favList {
   removeFromFavorites(id) {
     let catList = document.getElementById("favoriteslist");
     let catItem = document.getElementById(id);
-    removeFromLocalStorage(this.cartkey, id);
-    catList.removeChild(catItem);
+    removeFromLocalStorage(this.cartkey, id); //removes the item from local storage
+    catList.removeChild(catItem); //removes the list item with the cat so you can visibly see the removal
     this.renderList();
   }
 }
 
+// Template for the favorites card (complete with thumbnail)
 function favCatCard(cat, image) {
   let photo = image[cat.id];
   return `<li class="favCard" id=${cat.id}>
